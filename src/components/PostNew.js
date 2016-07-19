@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
+import { createPost } from '../actions/index';
 
 class PostNew extends Component {
   render() {
     const { fields: { title, categories, content }, handleSubmit } = this.props;
 
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(this.props.createPost)}>
         <h3>Create a new post</h3>
         <div className="form-group">
           <label>Title</label>
           <input type="text" className="form-control" {...title} />
+          <div className="text-help">
+            {title.touched ? title.error : ''}
+          </div>
         </div>
 
         <div className="form-group">
@@ -29,7 +33,20 @@ class PostNew extends Component {
   }
 }
 
+function validate(values) {
+  const errors = {};
+
+  if (!values.title) {
+    errors.title = "enter a title";
+  }
+
+  return errors;
+}
+
+// connect: first argument is mapStateToProps, 2nd is mapDispatchToProps
+//reduxform: first is form config, 2nd is mapStateToProps, 3rd is mapDispatchToProps
 export default reduxForm({
   form: 'PostNewForm',
-  fields: ['title', 'categories', 'content']
-})(PostNew);
+  fields: ['title', 'categories', 'content'],
+  validate
+}, null, { createPost })(PostNew);
