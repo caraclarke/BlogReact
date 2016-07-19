@@ -1,5 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export default () => {
-  return <div>list of posts</div>
-};
+class PostIndex extends Component {
+
+  componentWillMount() {
+    console.log('this would be blah');
+  }
+
+  render() {
+    return (
+      <div>blah</div>
+    );
+  }
+}
+
+export default PostIndex;
