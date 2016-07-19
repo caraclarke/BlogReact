@@ -1,6 +1,8 @@
 import React from 'react';
 /*
 Route object is what we use to define a match between URL and component
+
+not actually switching pages, just swapping components
 */
 import { Route, IndexRoute } from 'react-router';
 
