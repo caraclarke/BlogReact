@@ -27,12 +27,14 @@ instead of above commented out function, pass in object you see below after null
 instead of binding actio creators and mapping dispatch, pass in object that says fetch posts
 
 just a shortcut
-*/
-export default connect(null, {
-  fetchPosts: fetchPosts
-})(PostIndex);
 
-/* **steps to create container that can call action creators**
+also es6 if key same as value only write once
+*/
+export default connect(null, { fetchPosts })(PostIndex);
+
+/*
+
+**steps to create container that can call action creators**
  1. import connect at top
  2. import action creator
  3. define mapDispatchToProps
