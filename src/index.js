@@ -5,6 +5,8 @@ import { createStore, applyMiddleware } from 'redux';
 import { Router, browserHistory } from 'react-router';
 
 import routes from './routes';
+import promise from 'redux-promise';
+
 /*
 
 history is an object that tells react-router how to interpret url changes
@@ -15,7 +17,7 @@ http://www.blog.com/posts/5 <-- BH means whenever after .com updates tells route
 
 import reducers from './reducers';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
