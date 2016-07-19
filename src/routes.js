@@ -8,5 +8,6 @@ import App from './components/app';
 
 // matches path of / to App component
 export default (
-  <Route path="/" component={App} />
-)
+  <Route path="/" component={App}>
+  </Route>
+);
